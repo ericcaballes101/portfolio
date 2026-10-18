@@ -1,1 +1,2877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080d1a">
 
+    <!-- EDIT HERE: Update your website title and SEO description -->
+    <title>Eric Arriola Caballes | Fleet Management Professional</title>
+    <meta name="description" content="Professional portfolio of Eric Arriola Caballes, Fleet Officer specializing in fleet management, transportation operations, road safety, fuel efficiency, GPS monitoring, and process improvement.">
+    <meta name="author" content="Eric Arriola Caballes">
+
+    <style>
+        /* =========================================================
+           ERIC ARRIOLA CABALLES — PERSONAL PORTFOLIO
+           Single-file website: HTML5 + CSS3 + Vanilla JavaScript
+           EDIT HERE: Customize colors in :root below.
+           ========================================================= */
+
+        :root {
+            --bg: #080d1a;
+            --bg-secondary: #0c1324;
+            --surface: #111a2d;
+            --surface-hover: #17233b;
+            --border: rgba(148, 163, 184, 0.15);
+            --text: #e8edf7;
+            --muted: #9aa8c1;
+            --blue: #60a5fa;
+            --indigo: #818cf8;
+            --cyan: #67e8f9;
+            --accent-gradient: linear-gradient(135deg, #60a5fa, #818cf8);
+            --shadow: 0 20px 55px rgba(0, 0, 0, 0.25);
+            --radius: 18px;
+            --max-width: 1160px;
+        }
+
+        /* Reset and base styles */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        button:focus-visible,
+        a:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible {
+            outline: 2px solid var(--cyan);
+            outline-offset: 4px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ::selection {
+            background: rgba(96, 165, 250, 0.35);
+            color: white;
+        }
+
+        .container {
+            width: min(var(--max-width), calc(100% - 48px));
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 105px 0;
+            position: relative;
+        }
+
+        .section-alt {
+            background: var(--bg-secondary);
+        }
+
+        .section-heading {
+            max-width: 720px;
+            margin: 0 auto 55px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--blue);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 2.4px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 22px;
+            height: 2px;
+            background: var(--accent-gradient);
+            border-radius: 3px;
+        }
+
+        .section-heading h2,
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.2;
+            letter-spacing: -1.2px;
+            margin-bottom: 18px;
+        }
+
+        .section-heading h2 span,
+        .gradient-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        .section-kicker {
+            color: var(--blue);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        /* Background decoration */
+        .ambient {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+            opacity: 0.12;
+            z-index: -1;
+        }
+
+        .ambient-blue {
+            background: #2563eb;
+            top: 0;
+            left: -220px;
+        }
+
+        .ambient-indigo {
+            background: #6366f1;
+            right: -220px;
+            bottom: 0;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 1000;
+            border-bottom: 1px solid transparent;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(8, 13, 26, 0.92);
+            backdrop-filter: blur(18px);
+            border-bottom-color: var(--border);
+        }
+
+        .nav-inner {
+            height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 11px;
+            font-weight: 800;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        .brand-mark {
+            width: 39px;
+            height: 39px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: var(--accent-gradient);
+            color: white;
+            font-size: 0.9rem;
+            box-shadow: 0 7px 25px rgba(96, 165, 250, 0.22);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.83rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: white;
+        }
+
+        .nav-links .nav-contact {
+            color: white;
+            padding: 10px 17px;
+            background: var(--accent-gradient);
+            border-radius: 10px;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            width: 43px;
+            height: 43px;
+            cursor: pointer;
+            font-size: 1.35rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 13px 21px;
+            border-radius: 11px;
+            border: 1px solid transparent;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: transform 0.25s ease, box-shadow 0.25s ease,
+                        border-color 0.25s ease, background 0.25s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-primary {
+            color: white;
+            background: var(--accent-gradient);
+            box-shadow: 0 9px 28px rgba(96, 165, 250, 0.18);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 13px 35px rgba(96, 165, 250, 0.3);
+        }
+
+        .btn-outline {
+            border-color: var(--border);
+            background: rgba(255, 255, 255, 0.025);
+            color: var(--text);
+        }
+
+        .btn-outline:hover {
+            border-color: rgba(96, 165, 250, 0.5);
+            background: rgba(96, 165, 250, 0.07);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 760px;
+            min-height: min(900px, 100svh);
+            display: flex;
+            align-items: center;
+            padding: 140px 0 95px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 65px;
+        }
+
+        .availability {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid var(--border);
+            background: rgba(17, 26, 45, 0.72);
+            border-radius: 30px;
+            padding: 8px 14px;
+            color: #cbd5e1;
+            font-size: 0.8rem;
+            margin-bottom: 28px;
+        }
+
+        .availability-dot {
+            height: 8px;
+            width: 8px;
+            border-radius: 50%;
+            background: #34d399;
+            box-shadow: 0 0 12px rgba(52, 211, 153, 0.55);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 5.6vw, 5.2rem);
+            letter-spacing: -3px;
+            line-height: 1.07;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 .line-two {
+            display: block;
+            margin-top: 8px;
+        }
+
+        .hero-role {
+            color: #c5d1e5;
+            font-size: clamp(1rem, 1.8vw, 1.25rem);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-description {
+            max-width: 610px;
+            color: var(--muted);
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+            margin-bottom: 32px;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .hero-tags span {
+            font-size: 0.75rem;
+            color: #bdcbe0;
+            border: 1px solid var(--border);
+            padding: 6px 11px;
+            border-radius: 7px;
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        /* Hero dashboard illustration */
+        .hero-visual {
+            position: relative;
+            max-width: 440px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .visual-glow {
+            position: absolute;
+            inset: 8% 4%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2563eb, #818cf8);
+            filter: blur(75px);
+            opacity: 0.22;
+        }
+
+        .dashboard-card {
+            position: relative;
+            padding: 27px;
+            border-radius: 25px;
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            background: linear-gradient(145deg, rgba(23, 35, 59, 0.96), rgba(12, 19, 36, 0.97));
+            box-shadow: var(--shadow);
+            transform: rotate(1deg);
+        }
+
+        .dashboard-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 27px;
+        }
+
+        .dashboard-title {
+            font-size: 0.92rem;
+            font-weight: 800;
+        }
+
+        .dashboard-subtitle {
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+
+        .dashboard-icon {
+            width: 43px;
+            height: 43px;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            background: rgba(96, 165, 250, 0.13);
+            color: var(--blue);
+            font-size: 1.4rem;
+        }
+
+        .dashboard-stat {
+            padding: 20px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid var(--border);
+            margin-bottom: 15px;
+        }
+
+        .dashboard-stat-label {
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+
+        .dashboard-stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+
+        .dashboard-stat-number span {
+            font-size: 0.85rem;
+            color: #34d399;
+            font-weight: 700;
+            margin-left: 7px;
+        }
+
+        .dashboard-bars {
+            display: flex;
+            align-items: end;
+            height: 70px;
+            gap: 9px;
+            margin-top: 18px;
+        }
+
+        .dashboard-bars span {
+            flex: 1;
+            border-radius: 5px 5px 2px 2px;
+            background: var(--accent-gradient);
+            opacity: 0.85;
+            animation: bar-grow 1s ease both;
+            transform-origin: bottom;
+        }
+
+        .dashboard-bars span:nth-child(1) { height: 40%; }
+        .dashboard-bars span:nth-child(2) { height: 62%; }
+        .dashboard-bars span:nth-child(3) { height: 50%; }
+        .dashboard-bars span:nth-child(4) { height: 75%; }
+        .dashboard-bars span:nth-child(5) { height: 57%; }
+        .dashboard-bars span:nth-child(6) { height: 88%; }
+        .dashboard-bars span:nth-child(7) { height: 100%; }
+
+        @keyframes bar-grow {
+            from { transform: scaleY(0.1); opacity: 0.1; }
+            to { transform: scaleY(1); opacity: 0.85; }
+        }
+
+        .dashboard-footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 0.75rem;
+            margin-top: 15px;
+        }
+
+        .floating-chip {
+            position: absolute;
+            padding: 13px 16px;
+            background: #17233b;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            font-size: 0.78rem;
+            font-weight: 700;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .floating-chip span {
+            color: #34d399;
+            font-size: 1rem;
+            margin-right: 6px;
+        }
+
+        .chip-one {
+            top: 18%;
+            right: -30px;
+        }
+
+        .chip-two {
+            bottom: 10%;
+            left: -38px;
+            animation-delay: -2.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Highlights */
+        .highlights {
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: rgba(17, 26, 45, 0.45);
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .highlight-item {
+            text-align: center;
+            padding: 31px 18px;
+            border-right: 1px solid var(--border);
+        }
+
+        .highlight-item:last-child {
+            border-right: none;
+        }
+
+        .highlight-value {
+            font-size: clamp(1.4rem, 3vw, 2.1rem);
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            line-height: 1.4;
+        }
+
+        .highlight-label {
+            color: var(--muted);
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 65px;
+            align-items: start;
+        }
+
+        .about-visual {
+            position: sticky;
+            top: 110px;
+        }
+
+        .about-monogram {
+            aspect-ratio: 4 / 4.5;
+            border-radius: 25px;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(96, 165, 250, 0.22), transparent 45%),
+                linear-gradient(145deg, #172642, #0d1425);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-monogram::before {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border: 1px solid rgba(129, 140, 248, 0.25);
+            border-radius: 50%;
+            box-shadow: 0 0 0 25px rgba(129, 140, 248, 0.035),
+                        0 0 0 50px rgba(129, 140, 248, 0.025);
+        }
+
+        .monogram {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            display: grid;
+            place-items: center;
+            border-radius: 35px;
+            background: var(--accent-gradient);
+            color: white;
+            font-size: 3.4rem;
+            font-weight: 900;
+            letter-spacing: -4px;
+            box-shadow: 0 25px 55px rgba(37, 99, 235, 0.25);
+            transform: rotate(-4deg);
+        }
+
+        .about-monogram h3 {
+            position: relative;
+            margin-top: 35px;
+            font-size: 1.15rem;
+        }
+
+        .about-monogram p {
+            position: relative;
+            color: var(--muted);
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        .about-content h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 23px;
+        }
+
+        .about-content > p {
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .about-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 13px;
+            margin: 28px 0;
+        }
+
+        .detail-card {
+            padding: 16px;
+            border: 1px solid var(--border);
+            border-radius: 13px;
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .detail-card small {
+            display: block;
+            color: var(--muted);
+            font-size: 0.74rem;
+            margin-bottom: 4px;
+        }
+
+        .detail-card strong {
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .detail-icon {
+            color: var(--blue);
+            margin-right: 6px;
+        }
+
+        /* General card grids */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            padding: 27px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: linear-gradient(145deg, rgba(17, 26, 45, 0.8), rgba(12, 19, 36, 0.72));
+            transition: transform 0.3s ease, border-color 0.3s ease,
+                        background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(96, 165, 250, 0.42);
+            background: linear-gradient(145deg, rgba(23, 35, 59, 0.95), rgba(12, 19, 36, 0.92));
+            box-shadow: var(--shadow);
+        }
+
+        .card-icon {
+            width: 49px;
+            height: 49px;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            background: rgba(96, 165, 250, 0.1);
+            border: 1px solid rgba(96, 165, 250, 0.13);
+            font-size: 1.4rem;
+            margin-bottom: 21px;
+        }
+
+        .card h3 {
+            font-size: 1.08rem;
+            line-height: 1.4;
+            margin-bottom: 11px;
+        }
+
+        .card p {
+            font-size: 0.88rem;
+            color: var(--muted);
+        }
+
+        /* Skills */
+        .skills-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        .skill-panel {
+            padding: 29px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            background: var(--surface);
+        }
+
+        .skill-panel h3 {
+            font-size: 1.13rem;
+            margin-bottom: 23px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            background: rgba(255, 255, 255, 0.025);
+            color: #c8d5e9;
+            border-radius: 8px;
+            padding: 9px 12px;
+            font-size: 0.81rem;
+            transition: border-color 0.2s, color 0.2s, background 0.2s;
+        }
+
+        .skill-tag:hover {
+            border-color: rgba(96, 165, 250, 0.45);
+            color: white;
+            background: rgba(96, 165, 250, 0.08);
+        }
+
+        .skill-meter {
+            margin-bottom: 22px;
+        }
+
+        .skill-meter:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-meter-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            font-size: 0.86rem;
+            margin-bottom: 9px;
+        }
+
+        .skill-meter-top span:last-child {
+            color: var(--muted);
+            font-size: 0.78rem;
+        }
+
+        .meter-track {
+            height: 6px;
+            border-radius: 10px;
+            background: #202c42;
+            overflow: hidden;
+        }
+
+        .meter-fill {
+            height: 100%;
+            width: 0;
+            background: var(--accent-gradient);
+            border-radius: 10px;
+            transition: width 1.2s ease;
+        }
+
+        .meter-fill.visible {
+            width: var(--level);
+        }
+
+        /* Experience timeline */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 17px;
+            top: 10px;
+            bottom: 15px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--blue), rgba(129, 140, 248, 0.08));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 57px;
+            padding-bottom: 35px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 4px solid var(--bg-secondary);
+            background: var(--blue);
+            box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.25);
+        }
+
+        .timeline-card {
+            padding: 28px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            border-radius: var(--radius);
+            transition: border-color 0.25s ease, transform 0.25s ease;
+        }
+
+        .timeline-card:hover {
+            border-color: rgba(96, 165, 250, 0.4);
+            transform: translateX(4px);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            font-size: 0.74rem;
+            color: var(--blue);
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 9px;
+        }
+
+        .timeline-card h3 {
+            font-size: 1.18rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-company {
+            font-size: 0.88rem;
+            color: var(--indigo);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .timeline-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 14px;
+        }
+
+        .timeline-card ul {
+            display: grid;
+            gap: 9px;
+        }
+
+        .timeline-card li {
+            color: #bac6d9;
+            font-size: 0.87rem;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .timeline-card li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--blue);
+            font-size: 1rem;
+        }
+
+        /* Projects */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            min-height: 305px;
+        }
+
+        .project-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .project-top .card-icon {
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        .project-index {
+            color: rgba(148, 163, 184, 0.35);
+            font-size: 1.2rem;
+            font-weight: 900;
+        }
+
+        .project-card h3 {
+            font-size: 1.05rem;
+        }
+
+        .project-card p {
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: auto;
+        }
+
+        .project-tags span {
+            font-size: 0.7rem;
+            padding: 5px 8px;
+            border-radius: 6px;
+            color: #b9c8e0;
+            background: rgba(96, 165, 250, 0.08);
+            border: 1px solid rgba(96, 165, 250, 0.1);
+        }
+
+        /* Education and certifications */
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .credential-panel {
+            padding: 31px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            background: var(--surface);
+        }
+
+        .credential-panel > h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+
+        .credential-entry {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 17px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .credential-entry:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .credential-entry:first-of-type {
+            padding-top: 0;
+        }
+
+        .credential-entry-icon {
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: rgba(96, 165, 250, 0.1);
+            font-size: 1.2rem;
+        }
+
+        .credential-entry h4 {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 4px;
+        }
+
+        .credential-entry p {
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        /* Services */
+        .service-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--blue);
+            filter: blur(70px);
+            opacity: 0;
+            right: -30px;
+            bottom: -30px;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .service-card:hover::after {
+            opacity: 0.25;
+        }
+
+        .service-card .card-icon {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Achievements */
+        .achievement-banner {
+            border: 1px solid rgba(96, 165, 250, 0.22);
+            background:
+                radial-gradient(circle at 0% 100%, rgba(37, 99, 235, 0.17), transparent 45%),
+                linear-gradient(135deg, #111c32, #10172a);
+            border-radius: 24px;
+            padding: 45px;
+            margin-top: 45px;
+        }
+
+        .achievement-banner h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .achievement-banner > p {
+            color: var(--muted);
+            max-width: 700px;
+            margin-bottom: 28px;
+        }
+
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .achievement-item {
+            padding: 20px;
+            border-radius: 13px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .achievement-item strong {
+            display: block;
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+
+        .achievement-item p {
+            font-size: 0.82rem;
+            color: var(--muted);
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 45px;
+            align-items: start;
+        }
+
+        .contact-copy h2 {
+            font-size: clamp(2.1rem, 4vw, 3rem);
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 22px;
+        }
+
+        .contact-copy > p {
+            color: var(--muted);
+            margin-bottom: 30px;
+        }
+
+        .contact-list {
+            display: grid;
+            gap: 17px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .contact-item-icon {
+            flex-shrink: 0;
+            width: 43px;
+            height: 43px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: rgba(96, 165, 250, 0.1);
+            border: 1px solid rgba(96, 165, 250, 0.1);
+            font-size: 1.1rem;
+        }
+
+        .contact-item small {
+            display: block;
+            color: var(--muted);
+            font-size: 0.77rem;
+        }
+
+        .contact-item a,
+        .contact-item strong {
+            display: block;
+            font-size: 0.89rem;
+            font-weight: 600;
+            overflow-wrap: anywhere;
+        }
+
+        .contact-item a:hover {
+            color: var(--blue);
+        }
+
+        .contact-form {
+            border: 1px solid var(--border);
+            border-radius: 21px;
+            padding: 30px;
+            background: var(--surface);
+        }
+
+        .contact-form h3 {
+            font-size: 1.2rem;
+            margin-bottom: 7px;
+        }
+
+        .contact-form > p {
+            color: var(--muted);
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #c9d5e7;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px 14px;
+            background: #0b1221;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text);
+            font-size: 0.87rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--blue);
+        }
+
+        .form-group textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+        }
+
+        .form-note {
+            font-size: 0.73rem;
+            color: var(--muted);
+            margin-top: 13px;
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 30px 0;
+            border-top: 1px solid var(--border);
+            background: #070b15;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .footer-copy strong {
+            color: var(--text);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            font-size: 0.8rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--blue);
+        }
+
+        .back-to-top {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            z-index: 900;
+            display: grid;
+            place-items: center;
+            width: 43px;
+            height: 43px;
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.25s, visibility 0.25s, transform 0.25s;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive tablet layout */
+        @media (max-width: 1050px) {
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                font-size: 0.78rem;
+            }
+
+            .hero-grid {
+                gap: 35px;
+            }
+
+            .chip-one {
+                right: -10px;
+            }
+
+            .chip-two {
+                left: -12px;
+            }
+
+            .about-grid {
+                gap: 40px;
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Responsive mobile navigation */
+        @media (max-width: 820px) {
+            .section {
+                padding: 78px 0;
+            }
+
+            .menu-toggle {
+                display: grid;
+                place-items: center;
+                flex-shrink: 0;
+            }
+
+            .nav-links {
+                position: fixed;
+                inset: 78px 0 auto;
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 15px 24px 25px;
+                background: rgba(8, 13, 26, 0.98);
+                border-bottom: 1px solid var(--border);
+                transform: translateY(-12px);
+                opacity: 0;
+                visibility: hidden;
+                transition: transform 0.25s ease, opacity 0.25s ease,
+                            visibility 0.25s ease;
+                max-height: calc(100svh - 78px);
+                overflow-y: auto;
+            }
+
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-links a {
+                padding: 12px 5px;
+                font-size: 0.95rem;
+                border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+            }
+
+            .nav-links .nav-contact {
+                text-align: center;
+                margin-top: 12px;
+                border: none;
+                padding: 12px;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 145px 0 85px;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 65px;
+            }
+
+            .hero-content {
+                max-width: 700px;
+            }
+
+            .hero-visual {
+                max-width: 420px;
+                width: calc(100% - 35px);
+            }
+
+            .highlights-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .highlight-item:nth-child(2) {
+                border-right: none;
+            }
+
+            .highlight-item:nth-child(-n+2) {
+                border-bottom: 1px solid var(--border);
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .about-visual {
+                position: relative;
+                top: auto;
+                max-width: 410px;
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            .about-monogram {
+                aspect-ratio: 4 / 3;
+            }
+
+            .skills-layout,
+            .credentials-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                gap: 35px;
+            }
+
+            .achievement-banner {
+                padding: 30px;
+            }
+
+            .achievement-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .container {
+                width: min(var(--max-width), calc(100% - 32px));
+            }
+
+            .nav-inner {
+                height: 70px;
+            }
+
+            .nav-links {
+                inset: 70px 0 auto;
+            }
+
+            .brand {
+                font-size: 0.86rem;
+            }
+
+            .brand-mark {
+                width: 35px;
+                height: 35px;
+            }
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.5rem, 11vw, 3.5rem);
+                letter-spacing: -1.8px;
+            }
+
+            .hero-description {
+                font-size: 0.93rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+            }
+
+            .hero-visual {
+                width: calc(100% - 20px);
+            }
+
+            .dashboard-card {
+                padding: 20px;
+            }
+
+            .dashboard-stat {
+                padding: 15px;
+            }
+
+            .dashboard-stat-number {
+                font-size: 1.7rem;
+            }
+
+            .chip-one {
+                right: -5px;
+                top: 12%;
+            }
+
+            .chip-two {
+                left: -8px;
+                bottom: 6%;
+            }
+
+            .floating-chip {
+                padding: 10px 12px;
+                font-size: 0.7rem;
+            }
+
+            .highlight-item {
+                padding: 23px 8px;
+            }
+
+            .highlight-label {
+                font-size: 0.72rem;
+            }
+
+            .section-heading {
+                margin-bottom: 36px;
+            }
+
+            .section-heading h2,
+            .section-title {
+                letter-spacing: -0.6px;
+            }
+
+            .about-details {
+                grid-template-columns: 1fr;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 23px;
+            }
+
+            .skill-panel,
+            .credential-panel,
+            .contact-form {
+                padding: 22px;
+            }
+
+            .timeline-item {
+                padding-left: 43px;
+            }
+
+            .timeline-card {
+                padding: 21px;
+            }
+
+            .timeline::before {
+                left: 11px;
+            }
+
+            .timeline-dot {
+                left: 2px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .achievement-banner {
+                padding: 23px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-links {
+                gap: 14px;
+            }
+        }
+
+        /* Accessibility: respect reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================================
+         NAVIGATION
+         EDIT HERE: Change section labels or your initials.
+         ========================================================= -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a class="brand" href="#home" aria-label="Eric Caballes homepage">
+                <span class="brand-mark">EC</span>
+                <span>Eric Caballes<span class="gradient-text">.</span></span>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="navLinks">
+                <span id="menuIcon" aria-hidden="true">☰</span>
+            </button>
+
+            <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#education">Education</a>
+                <a href="#services">Services</a>
+                <a class="nav-contact" href="#contact">Let's Connect ↗</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- =====================================================
+             HOME / HERO
+             EDIT HERE: Name, title, intro, and specialty tags.
+             ===================================================== -->
+        <section class="hero" id="home">
+            <div class="ambient ambient-blue"></div>
+            <div class="ambient ambient-indigo"></div>
+
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <div class="availability">
+                        <span class="availability-dot"></span>
+                        Fleet Management · Road Safety · Operations
+                    </div>
+
+                    <p class="eyebrow">Professional Portfolio</p>
+
+                    <h1>
+                        Eric Arriola
+                        <span class="line-two gradient-text">Caballes.</span>
+                    </h1>
+
+                    <p class="hero-role">
+                        Fleet Officer <span class="muted">|</span>
+                        Fleet Management &amp; Transportation Operations
+                    </p>
+
+                    <p class="hero-description">
+                        I help organizations improve fleet performance through
+                        safe transportation, efficient vehicle utilization,
+                        fuel monitoring, GPS tracking, cost control, and
+                        continuous process improvement.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">
+                            Explore My Work <span aria-hidden="true">↗</span>
+                        </a>
+                        <a href="#contact" class="btn btn-outline">
+                            Get In Touch <span aria-hidden="true">→</span>
+                        </a>
+                    </div>
+
+                    <div class="hero-tags" aria-label="Areas of expertise">
+                        <span>Fleet Operations</span>
+                        <span>Road Safety</span>
+                        <span>Fuel Efficiency</span>
+                        <span>Process Improvement</span>
+                    </div>
+                </div>
+
+                <!-- Decorative fleet performance dashboard -->
+                <div class="hero-visual" aria-label="Fleet management dashboard illustration">
+                    <div class="visual-glow"></div>
+
+                    <div class="dashboard-card">
+                        <div class="dashboard-top">
+                            <div>
+                                <p class="dashboard-title">Fleet Performance</p>
+                                <p class="dashboard-subtitle">Operations overview</p>
+                            </div>
+                            <div class="dashboard-icon" aria-hidden="true">⌁</div>
+                        </div>
+
+                        <div class="dashboard-stat">
+                            <p class="dashboard-stat-label">Safety First</p>
+                            <div class="dashboard-stat-number">
+                                Zero <span>Major accidents*</span>
+                            </div>
+                            <p class="dashboard-subtitle">
+                                Focused on safe and responsible fleet operations
+                            </p>
+                        </div>
+
+                        <div class="dashboard-stat">
+                            <p class="dashboard-stat-label">Operational Focus</p>
+                            <div class="dashboard-stat-number">Efficiency</div>
+                            <div class="dashboard-bars" aria-hidden="true">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="dashboard-footer">
+                                <span>Monitoring</span>
+                                <span>Continuous improvement</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="floating-chip chip-one">
+                        <span aria-hidden="true">✓</span> Safety &amp; Compliance
+                    </div>
+
+                    <div class="floating-chip chip-two">
+                        <span aria-hidden="true">↗</span> Cost Optimization
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDIT HERE: These are professional focus areas, not verified
+             lifetime totals or guaranteed performance statistics. -->
+        <section class="highlights" aria-label="Professional highlights">
+            <div class="container highlights-grid">
+                <div class="highlight-item">
+                    <div class="highlight-value gradient-text">Safety</div>
+                    <p class="highlight-label">Accident Prevention Focus</p>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-value gradient-text">Efficiency</div>
+                    <p class="highlight-label">Fuel &amp; Cost Monitoring</p>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-value gradient-text">GPS</div>
+                    <p class="highlight-label">Fleet Performance Tracking</p>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-value gradient-text">Kaizen</div>
+                    <p class="highlight-label">Continuous Improvement</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             ABOUT
+             EDIT HERE: Update your profile and professional goals.
+             ===================================================== -->
+        <section class="section" id="about">
+            <div class="container about-grid">
+                <div class="about-visual reveal">
+                    <div class="about-monogram">
+                        <div class="monogram">EC</div>
+                        <h3>Eric Arriola Caballes</h3>
+                        <p>Fleet Officer | Fleet Management</p>
+                    </div>
+                </div>
+
+                <div class="about-content reveal">
+                    <p class="eyebrow">About Me</p>
+                    <h2>
+                        Connecting fleet operations with
+                        <span class="gradient-text">purpose and performance.</span>
+                    </h2>
+
+                    <p>
+                        I am an experienced Fleet Officer with a background
+                        in fleet operations, vehicle management, transportation
+                        coordination, logistics, and road safety. I currently
+                        work with World Vision Development Foundation (WVDF),
+                        helping ensure the efficient, safe, and cost-effective
+                        use of fleet resources in support of organizational
+                        operations and humanitarian programs.
+                    </p>
+
+                    <p>
+                        My responsibilities include vehicle dispatch and
+                        utilization monitoring, preventive maintenance
+                        coordination, fuel efficiency monitoring, GPS tracking,
+                        insurance and registration compliance, outsourced
+                        transportation management, and billing documentation.
+                    </p>
+
+                    <p>
+                        I value continuous improvement, operational efficiency,
+                        driver safety, and responsible resource management.
+                        Through my Bachelor of Science in Industrial Engineering
+                        studies at the Polytechnic University of the Philippines,
+                        I am strengthening my capabilities in process improvement,
+                        quality management, and operational excellence.
+                    </p>
+
+                    <p>
+                        My goal is to help build reliable, accountable, and
+                        data-informed fleet operations that support both
+                        organizational performance and meaningful community impact.
+                    </p>
+
+                    <div class="about-details">
+                        <div class="detail-card">
+                            <small><span class="detail-icon">⌖</span> Location</small>
+                            <strong>Pasig City, Philippines</strong>
+                        </div>
+
+                        <div class="detail-card">
+                            <small><span class="detail-icon">▤</span> Current Organization</small>
+                            <strong>World Vision Development Foundation</strong>
+                        </div>
+
+                        <div class="detail-card">
+                            <small><span class="detail-icon">⌘</span> Education</small>
+                            <strong>BS Industrial Engineering</strong>
+                        </div>
+
+                        <div class="detail-card">
+                            <small><span class="detail-icon">◎</span> Professional Focus</small>
+                            <strong>Safety, Efficiency &amp; Improvement</strong>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="btn btn-primary">
+                        Discuss an Opportunity ↗
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             SKILLS
+             EDIT HERE: Add, remove, or rename your skills.
+             ===================================================== -->
+        <section class="section section-alt" id="skills">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <p class="eyebrow">My Expertise</p>
+                    <h2>Skills that keep operations <span>moving.</span></h2>
+                    <p>
+                        A practical combination of fleet operations,
+                        transportation coordination, safety, analytical
+                        thinking, and administrative control.
+                    </p>
+                </div>
+
+                <div class="skills-layout">
+                    <div class="skill-panel reveal">
+                        <h3><span class="gradient-text">✦</span> Core Competencies</h3>
+
+                        <div class="skill-list">
+                            <span class="skill-tag">Fleet Management</span>
+                            <span class="skill-tag">Vehicle Dispatch</span>
+                            <span class="skill-tag">Vehicle Utilization</span>
+                            <span class="skill-tag">Road Safety</span>
+                            <span class="skill-tag">Defensive Driving</span>
+                            <span class="skill-tag">Fuel Efficiency</span>
+                            <span class="skill-tag">Cost Control</span>
+                            <span class="skill-tag">GPS Tracking</span>
+                            <span class="skill-tag">Preventive Maintenance</span>
+                            <span class="skill-tag">Insurance Compliance</span>
+                            <span class="skill-tag">Vehicle Registration</span>
+                            <span class="skill-tag">Vendor Management</span>
+                            <span class="skill-tag">Outsourced Transport</span>
+                            <span class="skill-tag">Billing Review</span>
+                            <span class="skill-tag">Logistics Operations</span>
+                            <span class="skill-tag">Process Improvement</span>
+                            <span class="skill-tag">Quality Management</span>
+                            <span class="skill-tag">Risk Management</span>
+                            <span class="skill-tag">Team Coordination</span>
+                            <span class="skill-tag">Microsoft Office</span>
+                            <span class="skill-tag">Fleet Information Systems</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-panel reveal">
+                        <h3><span class="gradient-text">↗</span> Professional Focus</h3>
+
+                        <!--
+                            EDIT HERE:
+                            The percentages below represent self-assessed areas
+                            of focus, not independently tested proficiency scores.
+                            Change the labels and --level values as appropriate.
+                        -->
+                        <div class="skill-meter">
+                            <div class="skill-meter-top">
+                                <span>Fleet &amp; Transportation Operations</span>
+                                <span>Core focus</span>
+                            </div>
+                            <div class="meter-track">
+                                <div class="meter-fill" style="--level: 92%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-meter">
+                            <div class="skill-meter-top">
+                                <span>Road Safety &amp; Compliance</span>
+                                <span>Core focus</span>
+                            </div>
+                            <div class="meter-track">
+                                <div class="meter-fill" style="--level: 90%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-meter">
+                            <div class="skill-meter-top">
+                                <span>Vehicle Utilization &amp; GPS Monitoring</span>
+                                <span>Core focus</span>
+                            </div>
+                            <div class="meter-track">
+                                <div class="meter-fill" style="--level: 88%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-meter">
+                            <div class="skill-meter-top">
+                                <span>Cost Control &amp; Billing Documentation</span>
+                                <span>Core focus</span>
+                            </div>
+                            <div class="meter-track">
+                                <div class="meter-fill" style="--level: 86%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-meter">
+                            <div class="skill-meter-top">
+                                <span>Process &amp; Quality Improvement</span>
+                                <span>Developing</span>
+                            </div>
+                            <div class="meter-track">
+                                <div class="meter-fill" style="--level: 80%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-meter">
+                            <div class="skill-meter-top">
+                                <span>Microsoft Office &amp; Reporting</span>
+                                <span>Core focus</span>
+                            </div>
+                            <div class="meter-track">
+                                <div class="meter-fill" style="--level: 84%"></div>
+                            </div>
+                        </div>
+
+                        <p class="muted" style="font-size: 0.75rem; margin-top: 22px;">
+                            Proficiency indicators are editable and illustrative.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             EXPERIENCE
+             EDIT HERE: Add exact employment dates and verified titles.
+             ===================================================== -->
+        <section class="section" id="experience">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <p class="eyebrow">Career Journey</p>
+                    <h2>Experience built around <span>execution.</span></h2>
+                    <p>
+                        Supporting transportation, fleet administration,
+                        operational coordination, and responsible resource
+                        management.
+                    </p>
+                </div>
+
+                <div class="timeline">
+
+                    <article class="timeline-item reveal">
+                        <span class="timeline-dot" aria-hidden="true"></span>
+
+                        <div class="timeline-card">
+                            <!-- EDIT HERE: Insert your exact employment dates. -->
+                            <span class="timeline-date">Current Role</span>
+
+                            <h3>Fleet Officer / Fleet Coordinator</h3>
+                            <div class="timeline-company">
+                                World Vision Development Foundation (WVDF)
+                            </div>
+
+                            <p>
+                                Coordinate fleet resources and transportation
+                                support for organizational activities, field
+                                operations, and humanitarian programs.
+                            </p>
+
+                            <ul>
+                                <li>
+                                    Coordinate vehicle dispatch, trip requests,
+                                    vehicle utilization, and transport service delivery.
+                                </li>
+                                <li>
+                                    Monitor GPS reports, trip records, mileage,
+                                    fuel consumption, and fleet performance.
+                                </li>
+                                <li>
+                                    Promote road safety and support initiatives
+                                    focused on preventing major vehicle accidents.
+                                </li>
+                                <li>
+                                    Coordinate vehicle maintenance, repairs,
+                                    insurance, registration, and compliance.
+                                </li>
+                                <li>
+                                    Review outsourced transportation billings,
+                                    fuel statements, and supporting documents.
+                                </li>
+                                <li>
+                                    Support fleet information system enhancements,
+                                    reporting, and process standardization.
+                                </li>
+                                <li>
+                                    Coordinate with drivers, vendors, service
+                                    providers, and internal stakeholders.
+                                </li>
+                                <li>
+                                    Promote cost efficiency, vehicle stewardship,
+                                    and responsible use of organizational assets.
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item reveal">
+                        <span class="timeline-dot" aria-hidden="true"></span>
+
+                        <div class="timeline-card">
+                            <span class="timeline-date">Previous Experience</span>
+
+                            <h3>Criminal Investigation &amp; Operational Support</h3>
+                            <div class="timeline-company">
+                                Criminal Investigation and Detection Group (CIDG)
+                                · Philippine National Police
+                            </div>
+
+                            <p>
+                                CIDG Agent / SMMCIDT SPD Field Office
+                            </p>
+
+                            <ul>
+                                <li>
+                                    Gained experience in analytical support,
+                                    operational coordination, and investigative
+                                    field activities.
+                                </li>
+                                <li>
+                                    Developed attention to detail, documentation
+                                    discipline, situational awareness, and
+                                    problem-solving skills.
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item reveal">
+                        <span class="timeline-dot" aria-hidden="true"></span>
+
+                        <div class="timeline-card">
+                            <span class="timeline-date">Previous Experience</span>
+
+                            <h3>Project Support</h3>
+                            <div class="timeline-company">
+                                MMUTIS Project · DOTC / JICA / NCTS, University of the Philippines
+                            </div>
+
+                            <p>
+                                Project-related experience involving transportation
+                                research and operational support.
+                            </p>
+
+                            <ul>
+                                <li>
+                                    Contributed to project support activities
+                                    associated with transportation and mobility.
+                                </li>
+                                <li>
+                                    Developed transferable skills in coordination,
+                                    analysis, documentation, and administrative support.
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item reveal">
+                        <span class="timeline-dot" aria-hidden="true"></span>
+
+                        <div class="timeline-card">
+                            <span class="timeline-date">Additional Background</span>
+
+                            <h3>Logistics, Transportation &amp; Administrative Operations</h3>
+                            <div class="timeline-company">
+                                Previous Professional Experience
+                            </div>
+
+                            <p>
+                                Additional experience across logistics,
+                                transportation and vehicle-related services,
+                                and operational support.
+                            </p>
+
+                            <ul>
+                                <li>
+                                    Supported coordination, documentation,
+                                    service delivery, and day-to-day operations.
+                                </li>
+                                <li>
+                                    Built practical experience applicable to
+                                    fleet administration, customer service,
+                                    and operational problem-solving.
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             PROJECTS
+             EDIT HERE: Replace project descriptions with verified
+             outcomes, dates, and measurable results where available.
+             ===================================================== -->
+        <section class="section section-alt" id="projects">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <p class="eyebrow">Selected Projects</p>
+                    <h2>Practical improvements. <span>Meaningful impact.</span></h2>
+                    <p>
+                        Fleet initiatives focused on safety, visibility,
+                        financial accountability, compliance, and continuous
+                        operational improvement.
+                    </p>
+                </div>
+
+                <div class="card-grid">
+
+                    <article class="card project-card reveal">
+                        <div class="project-top">
+                            <div class="card-icon">▦</div>
+                            <span class="project-index">01</span>
+                        </div>
+                        <h3>WVIS Fleet Management System Enhancement</h3>
+                        <p>
+                            Supported improvements to the World Vision
+                            Information System for fleet operations, including
+                            vehicle requests, trip monitoring, outsourced
+                            vehicle costs, and fleet reporting.
+                        </p>
+                        <div class="project-tags">
+                            <span>Fleet Systems</span>
+                            <span>Reporting</span>
+                            <span>Digitalization</span>
+                        </div>
+                    </article>
+
+                    <article class="card project-card reveal">
+                        <div class="project-top">
+                            <div class="card-icon">♧</div>
+                            <span class="project-index">02</span>
+                        </div>
+                        <h3>Drive Safe &amp; Road Safety Initiatives</h3>
+                        <p>
+                            Supported driver safety awareness, defensive driving,
+                            risk reduction, and road safety activities aimed
+                            at preventing vehicle accidents.
+                        </p>
+                        <div class="project-tags">
+                            <span>Driver Safety</span>
+                            <span>Training</span>
+                            <span>Risk Management</span>
+                        </div>
+                    </article>
+
+                    <article class="card project-card reveal">
+                        <div class="project-top">
+                            <div class="card-icon">↗</div>
+                            <span class="project-index">03</span>
+                        </div>
+                        <h3>Fuel Efficiency Monitoring</h3>
+                        <p>
+                            Monitored fuel consumption and vehicle efficiency
+                            to identify performance trends, improve fuel
+                            accountability, and find opportunities for
+                            operating cost savings.
+                        </p>
+                        <div class="project-tags">
+                            <span>Fuel Monitoring</span>
+                            <span>Cost Control</span>
+                            <span>Analysis</span>
+                        </div>
+                    </article>
+
+                    <article class="card project-card reveal">
+                        <div class="project-top">
+                            <div class="card-icon">⌖</div>
+                            <span class="project-index">04</span>
+                        </div>
+                        <h3>GPS &amp; Fleet Performance Monitoring</h3>
+                        <p>
+                            Used GPS reports, trip records, and vehicle
+                            monitoring information to support accountability,
+                            utilization reviews, driver safety, and operational
+                            decision-making.
+                        </p>
+                        <div class="project-tags">
+                            <span>GPS Tracking</span>
+                            <span>Fleet Analytics</span>
+                            <span>Monitoring</span>
+                        </div>
+                    </article>
+
+                    <article class="card project-card reveal">
+                        <div class="project-top">
+                            <div class="card-icon">✓</div>
+                            <span class="project-index">05</span>
+                        </div>
+                        <h3>Fleet Management Guidelines Improvement</h3>
+                        <p>
+                            Supported the implementation and improvement of
+                            vehicle management procedures, documentation
+                            standards, and compliance practices.
+                        </p>
+                        <div class="project-tags">
+                            <span>Compliance</span>
+                            <span>Standardization</span>
+                            <span>Governance</span>
+                        </div>
+                    </article>
+
+                    <article class="card project-card reveal">
+                        <div class="project-top">
+                            <div class="card-icon">₱</div>
+                            <span class="project-index">06</span>
+                        </div>
+                        <h3>Fleet Cost &amp; Billing Control</h3>
+                        <p>
+                            Reviewed fuel statements and outsourced
+                            transportation billings with supporting
+                            documentation to strengthen financial accuracy
+                            and accountability.
+                        </p>
+                        <div class="project-tags">
+                            <span>Billing Review</span>
+                            <span>Documentation</span>
+                            <span>Cost Management</span>
+                        </div>
+                    </article>
+
+                </div>
+
+                <div class="achievement-banner reveal">
+                    <h3>How I define <span class="gradient-text">success.</span></h3>
+                    <p>
+                        Fleet performance is about more than moving vehicles.
+                        It means protecting people, using resources responsibly,
+                        maintaining reliable service, and continually improving
+                        how work gets done.
+                    </p>
+
+                    <div class="achievement-grid">
+                        <div class="achievement-item">
+                            <strong>Zero-Accident Mindset</strong>
+                            <p>
+                                Prioritizing preventive measures, safe driving,
+                                and risk awareness.
+                            </p>
+                        </div>
+
+                        <div class="achievement-item">
+                            <strong>Cost &amp; Fuel Efficiency</strong>
+                            <p>
+                                Monitoring consumption, reviewing expenses,
+                                and identifying savings opportunities.
+                            </p>
+                        </div>
+
+                        <div class="achievement-item">
+                            <strong>Compliance &amp; Accountability</strong>
+                            <p>
+                                Strengthening dispatch records, billing
+                                accuracy, and vehicle documentation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             EDUCATION & CERTIFICATIONS
+             EDIT HERE: Add graduation dates and certificate issuers
+             only when confirmed.
+             ===================================================== -->
+        <section class="section" id="education">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <p class="eyebrow">Qualifications</p>
+                    <h2>Learning with a <span>purpose.</span></h2>
+                    <p>
+                        Building a strong foundation in industrial engineering,
+                        operational excellence, and transportation safety.
+                    </p>
+                </div>
+
+                <div class="credentials-grid">
+
+                    <div class="credential-panel reveal">
+                        <h3>
+                            <span class="gradient-text">▤</span>
+                            Education
+                        </h3>
+
+                        <div class="credential-entry">
+                            <div class="credential-entry-icon">🎓</div>
+                            <div>
+                                <h4>Bachelor of Science in Industrial Engineering</h4>
+                                <p>Polytechnic University of the Philippines (PUP)</p>
+                                <p style="margin-top: 8px;">
+                                    Focus areas: process improvement, quality
+                                    management, systems thinking, and operational
+                                    efficiency.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="credential-entry">
+                            <div class="credential-entry-icon">◎</div>
+                            <div>
+                                <h4>Professional Development</h4>
+                                <p>
+                                    Continuing to develop capabilities in fleet
+                                    operations, transportation safety, logistics,
+                                    and process improvement.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="credential-panel reveal">
+                        <h3>
+                            <span class="gradient-text">✦</span>
+                            Certifications &amp; Training
+                        </h3>
+
+                        <div class="credential-entry">
+                            <div class="credential-entry-icon">🏅</div>
+                            <div>
+                                <h4>Lean Six Sigma Yellow Belt</h4>
+                                <p>Process improvement fundamentals</p>
+                            </div>
+                        </div>
+
+                        <div class="credential-entry">
+                            <div class="credential-entry-icon">🚗</div>
+                            <div>
+                                <h4>ROSPA Driver Training</h4>
+                                <p>Driver safety and risk awareness</p>
+                            </div>
+                        </div>
+
+                        <div class="credential-entry">
+                            <div class="credential-entry-icon">🛡️</div>
+                            <div>
+                                <h4>World Vision National Disaster Management Training</h4>
+                                <p>NDMT</p>
+                            </div>
+                        </div>
+
+                        <div class="credential-entry">
+                            <div class="credential-entry-icon">✓</div>
+                            <div>
+                                <h4>Drive Safe Program Organizer / Coordinator</h4>
+                                <p>Road safety awareness and coordination</p>
+                            </div>
+                        </div>
+
+                        <div class="credential-entry">
+                            <div class="credential-entry-icon">↗</div>
+                            <div>
+                                <h4>Defensive Driving &amp; Road Safety Training</h4>
+                                <p>Safe driving practices and accident prevention</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             SERVICES
+             EDIT HERE: Customize the services you offer to clients.
+             ===================================================== -->
+        <section class="section section-alt" id="services">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <p class="eyebrow">What I Can Help With</p>
+                    <h2>Fleet support for <span>better operations.</span></h2>
+                    <p>
+                        Practical support for organizations seeking to improve
+                        transportation coordination, fleet visibility, safety,
+                        compliance, and cost management.
+                    </p>
+                </div>
+
+                <div class="card-grid">
+
+                    <article class="card service-card reveal">
+                        <div class="card-icon">🚐</div>
+                        <h3>Fleet Operations &amp; Dispatch</h3>
+                        <p>
+                            Support for vehicle scheduling, dispatch coordination,
+                            trip utilization, transportation requests, and
+                            service delivery monitoring.
+                        </p>
+                    </article>
+
+                    <article class="card service-card reveal">
+                        <div class="card-icon">⛽</div>
+                        <h3>Fuel Efficiency &amp; Cost Control</h3>
+                        <p>
+                            Fuel consumption tracking, efficiency reporting,
+                            cost monitoring, and identification of potential
+                            savings opportunities.
+                        </p>
+                    </article>
+
+                    <article class="card service-card reveal">
+                        <div class="card-icon">⌖</div>
+                        <h3>GPS Monitoring &amp; Reporting</h3>
+                        <p>
+                            Review of GPS records, trip data, vehicle utilization,
+                            and performance indicators to support better
+                            operational decisions.
+                        </p>
+                    </article>
+
+                    <article class="card service-card reveal">
+                        <div class="card-icon">🛠️</div>
+                        <h3>Maintenance &amp; Compliance Tracking</h3>
+                        <p>
+                            Coordination of preventive maintenance, repair
+                            schedules, vehicle insurance, registration, and
+                            supporting documentation.
+                        </p>
+                    </article>
+
+                    <article class="card service-card reveal">
+                        <div class="card-icon">▤</div>
+                        <h3>Billing &amp; Vendor Coordination</h3>
+                        <p>
+                            Review of fuel and outsourced transport billings,
+                            supporting records, service provider coordination,
+                            and financial documentation.
+                        </p>
+                    </article>
+
+                    <article class="card service-card reveal">
+                        <div class="card-icon">♧</div>
+                        <h3>Fleet Safety &amp; Process Improvement</h3>
+                        <p>
+                            Support for road safety awareness, driver performance
+                            monitoring, fleet procedures, reporting, and
+                            continuous improvement initiatives.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             CONTACT
+             EDIT HERE:
+             Update the email, LinkedIn URL, and location.
+             The contact form opens the visitor's default email app.
+             It does not require a backend or external library.
+             ===================================================== -->
+        <section class="section" id="contact">
+            <div class="container contact-grid">
+
+                <div class="contact-copy reveal">
+                    <p class="eyebrow">Let's Connect</p>
+
+                    <h2>
+                        Let's make fleet operations
+                        <span class="gradient-text">work smarter.</span>
+                    </h2>
+
+                    <p>
+                        I welcome professional connections, career opportunities,
+                        fleet management discussions, transportation projects,
+                        and collaborations focused on safety and operational
+                        improvement.
+                    </p>
+
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <div class="contact-item-icon">✉</div>
+                            <div>
+                                <small>Email</small>
+                                <a href="mailto:caballes.eric@yahoo.com">
+                                    caballes.eric@yahoo.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-item-icon">in</div>
+                            <div>
+                                <small>LinkedIn</small>
+                                <a href="https://www.linkedin.com/in/eric-c-7143b7ba/"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    Connect with me on LinkedIn ↗
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-item-icon">⌖</div>
+                            <div>
+                                <small>Location</small>
+                                <strong>Pasig City, Metro Manila, Philippines</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form reveal">
+                    <h3>Send Me a Message</h3>
+                    <p>
+                        Complete the form below to prepare an email message.
+                    </p>
+
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name"
+                                       placeholder="Juan Dela Cruz"
+                                       autocomplete="name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email"
+                                       placeholder="juan@example.com"
+                                       autocomplete="email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject"
+                                   placeholder="Career opportunity / Collaboration"
+                                   required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message"
+                                      placeholder="Hello Eric, I would like to discuss..."
+                                      required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            Prepare Email <span aria-hidden="true">↗</span>
+                        </button>
+
+                        <p class="form-note" id="formNote" aria-live="polite">
+                            Your email app will open with your message prepared.
+                        </p>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =========================================================
+         FOOTER
+         EDIT HERE: Change the copyright name or add social links.
+         ========================================================= -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <p class="footer-copy">
+                © <span id="currentYear"></span>
+                <strong>Eric Arriola Caballes.</strong>
+                All rights reserved.
+            </p>
+
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <a href="https://www.linkedin.com/in/eric-c-7143b7ba/"
+                   target="_blank"
+                   rel="noopener noreferrer">LinkedIn ↗</a>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop"
+            aria-label="Back to top" title="Back to top">
+        ↑
+    </button>
+
+    <script>
+        /* =========================================================
+           VANILLA JAVASCRIPT
+           Everything runs locally in this HTML file.
+           ========================================================= */
+
+        // Update the copyright year automatically.
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+        // Navigation elements.
+        const navbar = document.getElementById("navbar");
+        const menuToggle = document.getElementById("menuToggle");
+        const menuIcon = document.getElementById("menuIcon");
+        const navLinks = document.getElementById("navLinks");
+        const backToTop = document.getElementById("backToTop");
+        const navAnchors = document.querySelectorAll(".nav-links a");
+
+        // Open and close the mobile navigation.
+        function closeMenu() {
+            navLinks.classList.remove("open");
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Open navigation menu");
+            menuIcon.textContent = "☰";
+            document.body.classList.remove("menu-open");
+        }
+
+        menuToggle.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("open");
+
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation menu" : "Open navigation menu"
+            );
+
+            menuIcon.textContent = isOpen ? "✕" : "☰";
+            document.body.classList.toggle("menu-open", isOpen);
+        });
+
+        // Close the mobile menu after a navigation link is selected.
+        navAnchors.forEach(function (link) {
+            link.addEventListener("click", closeMenu);
+        });
+
+        // Close the menu with Escape for keyboard accessibility.
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                closeMenu();
+            }
+        });
+
+        // Navigation background and back-to-top button on scroll.
+        function handleScroll() {
+            const scrollPosition = window.scrollY;
+
+            navbar.classList.toggle("scrolled", scrollPosition > 25);
+            backToTop.classList.toggle("visible", scrollPosition > 500);
+        }
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
+
+        // Scroll back to the top.
+        backToTop.addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+        // Highlight the navigation link for the current visible section.
+        const sections = document.querySelectorAll("main section[id]");
+
+        if ("IntersectionObserver" in window) {
+            const sectionObserver = new IntersectionObserver(
+                function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            navAnchors.forEach(function (link) {
+                                const matches =
+                                    link.getAttribute("href") === "#" + entry.target.id;
+
+                                link.classList.toggle("active", matches);
+                            });
+                        }
+                    });
+                },
+                {
+                    rootMargin: "-25% 0px -60% 0px",
+                    threshold: 0
+                }
+            );
+
+            sections.forEach(function (section) {
+                sectionObserver.observe(section);
+            });
+        }
+
+        // Reveal cards and sections as the visitor scrolls down.
+        const revealElements = document.querySelectorAll(".reveal");
+        const meterFills = document.querySelectorAll(".meter-fill");
+
+        if ("IntersectionObserver" in window) {
+            const revealObserver = new IntersectionObserver(
+                function (entries, observer) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+            revealElements.forEach(function (element) {
+                revealObserver.observe(element);
+            });
+
+            const meterObserver = new IntersectionObserver(
+                function (entries, observer) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.3
+                }
+            );
+
+            meterFills.forEach(function (meter) {
+                meterObserver.observe(meter);
+            });
+        } else {
+            // Fallback for browsers without IntersectionObserver.
+            revealElements.forEach(function (element) {
+                element.classList.add("visible");
+            });
+
+            meterFills.forEach(function (meter) {
+                meter.classList.add("visible");
+            });
+        }
+
+        // Contact form:
+        // This standalone website has no server or email API.
+        // Use mailto to prepare a message in the visitor's email app.
+        // EDIT HERE: Change the destination email if it changes.
+        const contactForm = document.getElementById("contactForm");
+        const formNote = document.getElementById("formNote");
+        const contactEmail = "caballes.eric@yahoo.com";
+
+        contactForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            if (!contactForm.reportValidity()) {
+                return;
+            }
+
+            const visitorName = document.getElementById("name").value.trim();
+            const visitorEmail = document.getElementById("email").value.trim();
+            const subject = document.getElementById("subject").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            const emailSubject = encodeURIComponent(subject);
+            const emailBody = encodeURIComponent(
+                "Hello Eric,\n\n" +
+                message +
+                "\n\nBest regards,\n" +
+                visitorName +
+                "\n" +
+                visitorEmail
+            );
+
+            const mailtoURL =
+                "mailto:" + contactEmail +
+                "?subject=" + emailSubject +
+                "&body=" + emailBody;
+
+            formNote.textContent =
+                "Opening your email application. If it does not open, " +
+                "email " + contactEmail + " directly.";
+
+            // Open the visitor's configured email application.
+            window.location.href = mailtoURL;
+        });
+
+        // If the browser window expands after opening the mobile menu,
+        // ensure the page returns to its normal desktop navigation state.
+        window.addEventListener("resize", function () {
+            if (window.innerWidth > 820) {
+                closeMenu();
+            }
+        });
+    </script>
+
+</body>
+</html>
