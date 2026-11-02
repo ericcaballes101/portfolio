@@ -1640,6 +1640,25 @@
                 transform: none;
             }
         }
+    
+        /* ===== Automation projects ===== */
+        .dmaic { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 36px; }
+        .dmaic div { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
+        .dmaic b { display: block; color: var(--blue); font-size: 1rem; margin-bottom: 6px; }
+        .dmaic span { color: var(--muted); font-size: .88rem; line-height: 1.5; }
+        .auto-cat { font-size: .78rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--cyan); }
+        .auto-card h3 { margin-bottom: 12px; }
+        .ba { border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; }
+        .ba strong { display: block; font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 4px; }
+        .ba p { margin: 0; font-size: .9rem; line-height: 1.55; }
+        .ba.before { background: rgba(148,163,184,.08); }
+        .ba.before strong { color: var(--muted); }
+        .ba.after { background: rgba(96,165,250,.10); }
+        .ba.after strong { color: var(--blue); }
+        .auto-link { display: inline-block; margin-top: 14px; color: var(--blue); font-weight: 600; font-size: .9rem; text-decoration: none; }
+        .auto-link:hover { color: var(--cyan); }
+        @media (max-width: 900px) { .dmaic { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 560px) { .dmaic { grid-template-columns: 1fr; } }
     </style>
 </head>
 
@@ -1669,6 +1688,7 @@
                 <a href="#skills">Skills</a>
                 <a href="#experience">Experience</a>
                 <a href="#projects">Projects</a>
+                <a href="#automation">Automation</a>
                 <a href="#education">Education</a>
                 <a href="#services">Services</a>
                 <a class="nav-contact" href="#contact">Let's Connect ↗</a>
@@ -2343,6 +2363,192 @@
                                 Strengthening dispatch records, billing
                                 accuracy, and vehicle documentation.
                             </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             AUTOMATION PROJECTS (manual to automated, Lean Six Sigma)
+             ===================================================== -->
+        <section class="section" id="automation">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <p class="eyebrow">Automation Projects</p>
+                    <h2>From manual to <span>almost automated.</span></h2>
+                    <p>
+                        Twelve web tools I built to take repeat fleet and logistics
+                        work out of spreadsheets, PDFs and Word files. Each one
+                        started as a manual task and was redesigned using Lean Six
+                        Sigma thinking, so the job became easy.
+                    </p>
+                </div>
+
+                <div class="dmaic reveal">
+                    <div><b>Define</b><span>Pick the repeat task that costs the most time or causes the most errors.</span></div>
+                    <div><b>Measure</b><span>Map the steps: re-keying, copying between files, waiting, checking.</span></div>
+                    <div><b>Analyze</b><span>Find the waste and the causes of defects, such as typing errors and mismatched totals.</span></div>
+                    <div><b>Improve</b><span>Build a tool that reads the source file, applies the rules and produces the output.</span></div>
+                    <div><b>Control</b><span>Built-in checks, backups and standard formats keep the result consistent every month.</span></div>
+                </div>
+
+                <div class="card-grid">
+
+                    <article class="card project-card auto-card reveal">
+                        <div class="project-top">
+                            <span class="auto-cat">Billing &amp; Cost</span>
+                            <span class="project-index">01</span>
+                        </div>
+                        <h3>Toll Fee Dashboard</h3>
+                        <div class="ba before"><strong>Before</strong><p>Autosweep and Easytrip statements of account were retyped into Excel line by line, then checked against the printed totals.</p></div>
+                        <div class="ba after"><strong>Now</strong><p>Upload the SOA PDFs and the tool reads every transaction, builds the monthly toll sheet, checks totals against each statement, and charts toll spend by vehicle, tollway and day. Completed sheets come back in to show where toll money went by charging code.</p></div>
+                        <div class="project-tags"><span>PDF parsing</span><span>Excel export</span><span>Cost allocation</span></div>
+                        <a class="auto-link" href="https://github.com/ericcaballes101/RFID" target="_blank" rel="noopener">View project on GitHub ↗</a>
+                    </article>
+                    <article class="card project-card auto-card reveal">
+                        <div class="project-top">
+                            <span class="auto-cat">Billing &amp; Cost</span>
+                            <span class="project-index">02</span>
+                        </div>
+                        <h3>PRF Generator</h3>
+                        <div class="ba before"><strong>Before</strong><p>Each outsourced-vehicle Payment Request Form was filled in by hand from the SOA, charging codes and template.</p></div>
+                        <div class="ba after"><strong>Now</strong><p>Drop in the SOA, charging-code file and PRF template. Account codes, T0–T9 and purpose are built automatically using the template&#x27;s coding rules, then downloaded as the finished PRF in Excel.</p></div>
+                        <div class="project-tags"><span>PDF + Excel</span><span>Account coding</span><span>Runs in browser</span></div>
+                        <a class="auto-link" href="https://github.com/ericcaballes101/outsourceprf" target="_blank" rel="noopener">View project on GitHub ↗</a>
+                    </article>
+                    <article class="card project-card auto-card reveal">
+                        <div class="project-top">
+                            <span class="auto-cat">Fuel &amp; Cost</span>
+                            <span class="project-index">03</span>
+                        </div>
+                        <h3>Fuel Distribution Dashboard</h3>
+                        <div class="ba before"><strong>Before</strong><p>Fuel and maintenance cost workbooks were reviewed one period at a time with no view of who used what.</p></div>
+                        <div class="ba after"><strong>Now</strong><p>Upload one Maintenance and Fuel Cost workbook per billing period (16th to 15th). The tool reads the period, links each fuel record to its VR number, requestor, destination and driver, and replaces a period when re-uploaded.</p></div>
+                        <div class="project-tags"><span>Billing periods</span><span>VR matching</span><span>Dashboard</span></div>
+                        <a class="auto-link" href="https://github.com/ericcaballes101/fuel-distribution-lookup" target="_blank" rel="noopener">View project on GitHub ↗</a>
+                    </article>
+                    <article class="card project-card auto-card reveal">
+                        <div class="project-top">
+                            <span class="auto-cat">Fuel &amp; Cost</span>
+                            <span class="project-index">04</span>
+                        </div>
+                        <h3>Fleet Expense Dashboard</h3>
+                        <div class="ba before"><strong>Before</strong><p>Monthly fleet expenses lived in separate sheets, which made year-to-date and recovery comparisons slow.</p></div>
+                        <div class="ba after"><strong>Now</strong><p>Encode or import monthly expenses to see totals, net cost, expenses against recovery, and where the money goes, by fiscal year, with Excel export.</p></div>
+                        <div class="project-tags"><span>Fiscal year</span><span>Expense vs recovery</span><span>Charts</span></div>
+                        <a class="auto-link" href="https://github.com/ericcaballes101/fleetdashexpense" target="_blank" rel="noopener">View project on GitHub ↗</a>
+                    </article>
+                    <article class="card project-card auto-card reveal">
+                        <div class="project-top">
+                            <span class="auto-cat">Fleet Records</span>
+                            <span class="project-index">05</span>
+                        </div>
+                        <h3>Vehicle Profiling Report Builder</h3>
+                        <div class="ba before"><strong>Before</strong><p>Vehicle profiles and 2013-to-present maintenance history were matched manually to work out cost per vehicle.</p></div>
+                        <div class="ba after"><strong>Now</strong><p>Upload the vehicle profile and maintenance history. The tool recognizes each file, adds only new records, and shows cost by year, month, location, regular maintenance versus repair, and a full record for every vehicle, with an Excel report.</p></div>
+                        <div class="project-tags"><span>Maintenance history</span><span>Cost analysis</span><span>Excel report</span></div>
+                        <a class="auto-link" href="https://github.com/ericcaballes101/wvvehicleprofile" target="_blank" rel="noopener">View project on GitHub ↗</a>
+                    </article>
+                    <article class="card project-card auto-card reveal">
+                        <div class="project-top">
+                            <span class="auto-cat">Operations</span>
+                            <span class="project-index">06</span>
+                        </div>
+                        <h3>Vehicle Request Monitor</h3>
+                        <div class="ba before"><strong>Before</strong><p>Monthly vehicle request files were summarized by hand to find volumes, kilometres and unserved requests.</p></div>
+                        <div class="ba after"><strong>Now</strong><p>Upload the monthly file to see VR counts, trips, kilometres, maintenance recovery, in-house versus outsourced requests, destinations, top requestors and drivers, and a list of unserved VRs. Click any bar to filter the whole page.</p></div>
+                        <div class="project-tags"><span>Interactive filters</span><span>Destination map</span><span>KPIs</span></div>
+                        <a class="auto-link" href="https://github.com/ericcaballes101/VRDashboard" target="_blank" rel="noopener">View project on GitHub ↗</a>
+                    </article>
+                    <article class="card project-card auto-card reveal">
+                        <div class="project-top">
+                            <span class="auto-cat">Operations</span>
+                            <span class="project-index">07</span>
+                        </div>
+                        <h3>Driver Compliance Dashboard</h3>
+                        <div class="ba before"><strong>Before</strong><p>Driver compliance workbooks were checked month by month with no annual trend.</p></div>
+                        <div class="ba after"><strong>Now</strong><p>Upload each monthly compliance workbook; the month is read from the title and added to an annual view with status, trends and a fiscal-year summary, plus backup and restore.</p></div>
+                        <div class="project-tags"><span>Compliance</span><span>Annual trend</span><span>Backup</span></div>
+                        <a class="auto-link" href="https://github.com/ericcaballes101/driver-task" target="_blank" rel="noopener">View project on GitHub ↗</a>
+                    </article>
+                    <article class="card project-card auto-card reveal">
+                        <div class="project-top">
+                            <span class="auto-cat">Maintenance &amp; Safety</span>
+                            <span class="project-index">08</span>
+                        </div>
+                        <h3>Fleet Condition Board</h3>
+                        <div class="ba before"><strong>Before</strong><p>Monthly Vehicle Maintenance and Condition Report PDFs were read one by one to spot risks across 17 vehicles.</p></div>
+                        <div class="ba after"><strong>Now</strong><p>Drop up to 17 PDF reports at once. The tool extracts mileage, next oil change, repairs and the checklist, then flags each vehicle as Good, Watch or Problem using clear safety rules and shows what needs attention first.</p></div>
+                        <div class="project-tags"><span>PDF reading</span><span>Risk rules</span><span>17 vehicles</span></div>
+                        <a class="auto-link" href="https://github.com/ericcaballes101/Fleet-Vehicle-Condition" target="_blank" rel="noopener">View project on GitHub ↗</a>
+                    </article>
+                    <article class="card project-card auto-card reveal">
+                        <div class="project-top">
+                            <span class="auto-cat">Maintenance &amp; Safety</span>
+                            <span class="project-index">09</span>
+                        </div>
+                        <h3>Vehicle Maintenance Checklist</h3>
+                        <div class="ba before"><strong>Before</strong><p>The monthly P.O.W.D.E.R-E checklist was an Excel file that drivers filled in and returned.</p></div>
+                        <div class="ba after"><strong>Now</strong><p>A phone-friendly web form for drivers with autosave and signature. Reports can be submitted online to a Google Sheet, downloaded as CSV, printed to PDF or emailed.</p></div>
+                        <div class="project-tags"><span>Mobile form</span><span>Google Sheets</span><span>P.O.W.D.E.R-E</span></div>
+                        <a class="auto-link" href="https://github.com/ericcaballes101/wvfleetmaintenancechecklist" target="_blank" rel="noopener">View project on GitHub ↗</a>
+                    </article>
+                    <article class="card project-card auto-card reveal">
+                        <div class="project-top">
+                            <span class="auto-cat">Logistics</span>
+                            <span class="project-index">10</span>
+                        </div>
+                        <h3>HEA Logistics Inventory</h3>
+                        <div class="ba before"><strong>Before</strong><p>Stock receipts and issues were tracked in spreadsheets, so balances could drift from the records.</p></div>
+                        <div class="ba after"><strong>Now</strong><p>An inventory system with item master, inbound and outbound records, stock ledger, stock count, reports and an audit log. Balance is always calculated from the movements, with reorder alerts and trucking cost and demurrage per movement.</p></div>
+                        <div class="project-tags"><span>Stock ledger</span><span>Audit log</span><span>Reorder alerts</span></div>
+                        <a class="auto-link" href="https://github.com/ericcaballes101/HEA-Logistics-Inventory" target="_blank" rel="noopener">View project on GitHub ↗</a>
+                    </article>
+                    <article class="card project-card auto-card reveal">
+                        <div class="project-top">
+                            <span class="auto-cat">Planning</span>
+                            <span class="project-index">11</span>
+                        </div>
+                        <h3>Performance Goals Gantt</h3>
+                        <div class="ba before"><strong>Before</strong><p>Performance goals and milestones were tracked in documents with no timeline view.</p></div>
+                        <div class="ba after"><strong>Now</strong><p>A Gantt view of goals by manager and staff, where progress is averaged from milestones. Each goal holds details, photos and documents, with import from PDF and export to PDF and Excel.</p></div>
+                        <div class="project-tags"><span>Gantt</span><span>Milestones</span><span>PDF / Excel</span></div>
+                        <a class="auto-link" href="https://github.com/ericcaballes101/ganntchart" target="_blank" rel="noopener">View project on GitHub ↗</a>
+                    </article>
+                    <article class="card project-card auto-card reveal">
+                        <div class="project-top">
+                            <span class="auto-cat">Reporting</span>
+                            <span class="project-index">12</span>
+                        </div>
+                        <h3>Fleet Report Builder</h3>
+                        <div class="ba before"><strong>Before</strong><p>The monthly fleet report in Word was rebuilt each month: pasting figures, screenshots and accomplishments.</p></div>
+                        <div class="ba after"><strong>Now</strong><p>Build the monthly report from structured inputs (fuel consumption, maintenance, fuel receipts, utilization, highlights, concerns and actions), preview it, and save as Word, HTML or a zip with files. An existing Word report can be loaded back in.</p></div>
+                        <div class="project-tags"><span>Word export</span><span>Templates</span><span>Monthly report</span></div>
+                        <a class="auto-link" href="https://github.com/ericcaballes101/fleetreport" target="_blank" rel="noopener">View project on GitHub ↗</a>
+                    </article>
+                </div>
+
+                <div class="achievement-banner reveal">
+                    <h3>What changed, <span class="gradient-text">in practice.</span></h3>
+                    <p>
+                        Upload a file, check the result, download the output. The
+                        tools run in the browser, so files stay on the user's own
+                        computer, and most include backup and restore.
+                    </p>
+                    <div class="achievement-grid">
+                        <div class="achievement-item">
+                            <strong>Less re-keying</strong>
+                            <p>Data is read straight from PDFs and Excel files instead of being retyped.</p>
+                        </div>
+                        <div class="achievement-item">
+                            <strong>Fewer errors</strong>
+                            <p>Totals are checked against the source and status rules are applied the same way every time.</p>
+                        </div>
+                        <div class="achievement-item">
+                            <strong>Faster decisions</strong>
+                            <p>Dashboards show costs, risks and unserved requests as soon as the file is loaded.</p>
                         </div>
                     </div>
                 </div>
